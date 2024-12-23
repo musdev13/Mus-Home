@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Домик Муса
+{% endblock %}
+
+{% block body %}
+<h1>Все статьи: {{ articles|length }}</h1>
+
+{% if articles|length > 0 %}
+    {% for el in articles %}
+    <div class="alert alert-warning">
+        <h2>{{ el.title }}</h2>
+        <p>{{ el.intro }}</p>
+        <p><b>Дата: {{ el.date.date() }}</b></p>
+        <a href="/{{ el.id }}" class="btn btn-warning">Просмотреть</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>Пока-что нету никаких статей.</p>
+{% endif %}
+{% endblock %}
